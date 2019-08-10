@@ -12,20 +12,21 @@
       </button>
     </div>
     <textarea v-model="selectedNotechild.content"></textarea>
+    <!--状态栏-->
     <div class="bottombar">
            <span class="date">
                <span class="label">Created</span>
                <span class="value">{{ selectedNotechild.created | date }}</span>
           </span>
-          <span class="lines">
+      <span class="lines">
               <span class="label">Lines</span>
               <span class="value">{{ linesCount }}</span>
           </span>
-          <span class="words">
+      <span class="words">
               <span class="label">Words</span>
               <span class="value">{{ wordsCount }}</span>
          </span>
-        <span class="characters">
+      <span class="characters">
             <span class="label">Characters</span>
             <span class="value">{{ charactersCount }}</span>
         </span>
@@ -39,9 +40,7 @@
   export default {
     name: 'mainPane',
     data() {
-      return {
-        msg: 'Welcome to Your Vue.js App'
-      }
+      return {}
     },
     props: ['selectedNotechild'],
     methods: {
@@ -55,24 +54,26 @@
     computed: {
       linesCount() {
         if (this.selectedNotechild) {
-          // Count the number of new line characters
+          // 计算有多少行
           return this.selectedNotechild.content.split(/\r\n|\r|\n/).length
         }
       },
       wordsCount() {
+        // 计算有多少个单词
         if (this.selectedNotechild) {
-          var s = this.selectedNotechild.content
-          // Turn new line cahracters into white-spaces
-          s = s.replace(/\n/g, ' ')
-          // Exclude start and end white-spaces
-          s = s.replace(/(^\s*)|(\s*$)/gi, '')
-          // Turn 2 or more duplicate white-spaces into 1
-          s = s.replace(/[ ]{2,}/gi, ' ')
-          // Return the number of spaces
-          return s.split(' ').length
+          let s = this.selectedNotechild.content;
+          // 将换行符转换为空格
+          s = s.replace(/\n/g, ' ');
+          // 排除开始和结束空格
+          s = s.replace(/(^\s*)|(\s*$)/gi, '');
+          // 将2个或更多重复的空格转换为1
+          s = s.replace(/[ ]{2,}/gi, ' ');
+          // 返回空格数
+          return s.split(' ').length;
         }
       },
       charactersCount() {
+        // 字母个数
         if (this.selectedNotechild) {
           return this.selectedNotechild.content.split('').length
         }
@@ -144,7 +145,8 @@
   .bottombar .label {
     color: #bbb;
   }
-  .bottombar >span{
+
+  .bottombar > span {
     margin-right: 10px;
   }
 </style>

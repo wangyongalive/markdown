@@ -1,6 +1,8 @@
 <template>
   <div id="sideBar">
+    <!--工具栏-->
     <div class="toolbar">
+      <!--添加笔记案例-->
       <button @click="addNote" class="btn-toolbar" :title="`${titlechild} note(s) already`">
         <i class="material-icons">add</i>
         Add note
