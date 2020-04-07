@@ -2,12 +2,13 @@
   <div id="sideBar">
     <!--工具栏-->
     <div class="toolbar">
-      <!--添加笔记案例-->
+      <!--添加笔记-->
       <button @click="addNote" class="btn-toolbar" :title="`${titlechild} note(s) already`">
         <i class="material-icons">add</i>
         Add note
       </button>
     </div>
+    <!--笔记列表-->
     <div class="notes">
       <div class="note" v-for="note of sortedNoteschild" :class="{selected: note === selectedNotechild}"
            @click="selectNote(note)">
@@ -20,11 +21,6 @@
 <script>
   export default {
     name: 'sideBar',
-    data() {
-      return {
-        msg: 'Welcome to Your Vue.js App'
-      }
-    },
     // 父向子 传递值
     props: ['titlechild', 'sortedNoteschild', 'selectedNotechild'],
     methods: {
@@ -45,6 +41,7 @@
     line-height: 1;
     vertical-align: middle;
   }
+
   .icon {
     font-size: 20px;
     float: right;
@@ -62,6 +59,7 @@
     margin: 2px;
     box-sizing: border-box; /*宽度包括  内容 边宽 内边距*/
   }
+
   .btn-toolbar:hover {
     background: #63c89b;
   }

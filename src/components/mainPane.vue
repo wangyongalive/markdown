@@ -1,5 +1,5 @@
 <template>
-  <div id="mainPane">
+  <div >
     <div class="toolbar">
       <input class="inputTitle" v-model="selectedNotechild.title" placeholder="输入笔记名称..."/>
       <button class="btnFavorite" @click="favoriteNotechild" title="Favorite note">

@@ -1,6 +1,5 @@
 <template>
-  <div id="previewPane" v-html="notePreview">
-
+  <div v-html="notePreview">
   </div>
 </template>
 
@@ -9,15 +8,10 @@
 
   export default {
     name: 'previewPane',
-    data() {
-      return {
-        msg: 'Welcome to Your Vue.js App'
-      }
-    },
-    props: ['selectedNotechild'],
+    props: ['selectedNote'],
     computed: {
       notePreview() {
-        return this.selectedNotechild ? marked(this.selectedNotechild.content) : ''
+        return this.selectedNote ? marked(this.selectedNote.content) : ''
       }
     }
   }

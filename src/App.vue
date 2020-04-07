@@ -1,35 +1,39 @@
 <template>
   <div id="app">
-    <silder-bar :titlechild="notes.length"
-                @addNotechild="addNote"
-                :sortedNoteschild="sortedNotes"
-                :selectedNotechild="selectedNote"
-                @selectNotechild="selectNote"
-    ></silder-bar>
+    <silder-bar
+      id="sideBar"
+      :titlechild="notes.length"
+      @addNotechild="addNote"
+      :sortedNoteschild="sortedNotes"
+      :selectedNotechild="selectedNote"
+      @selectNotechild="selectNote"
+    />
     <template v-if="notes.length">
       <main-pane
+        id="mainPane"
         :selectedNotechild="selectedNote"
         @favoriteNotechild="favoriteNote"
         @removeNotechild="removeNote"
-      ></main-pane>
+      />
       <preview-pane
+        id="previewPane"
         :selectedNotechild="selectedNote"
-      ></preview-pane>
+      />
     </template>
   </div>
 </template>
 
 <script>
-  import silderBar from './components/sideBar'
-  import mainPane from './components/mainPane'
-  import previewPane from './components/previewPane'
+  import SilderBar from './components/sideBar'
+  import MainPane from './components/mainPane'
+  import PreviewPane from './components/previewPane'
 
   export default {
     name: 'App',
     components: {
-      silderBar,
-      mainPane,
-      previewPane
+      SilderBar,
+      MainPane,
+      PreviewPane
     },
     data() {
       return {
@@ -92,13 +96,7 @@
   }
 </script>
 
-<style>
-  /*这里高度要设置100% 不然后面继承的值就不是屏幕的高度*/
-  html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-  }
+<style scoped>
 
   #app {
     display: flex;
